@@ -24,7 +24,7 @@
             "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 381,
+                "x": 424,
                 "y": 62.5
             }
         }
@@ -45,9 +45,9 @@
     "project": "level1.tiled-project",
     "property.type": "bool",
     "recentFiles": [
+        "C:/umayr/UCSC Classes/CMPM120/S7 Platformers/PlatformImprovement/assets/platformer-level-1.tmx",
         "level1.tmx",
-        "PixelPlatformer.tsx",
-        "C:/umayr/UCSC Classes/CMPM120/S7 Platformers/PlatformImprovement/assets/platformer-level-1.tmx"
+        "PixelPlatformer.tsx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
