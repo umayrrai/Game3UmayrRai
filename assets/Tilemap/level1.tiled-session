@@ -1,0 +1,57 @@
+{
+    "activeFile": "C:/umayr/UCSC Classes/CMPM120/S7 Platformers/PlatformImprovement/assets/platformer-level-1.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "C:/umayr/UCSC Classes/CMPM120/S7 Platformers/PlatformImprovement/assets/platformer-level-1.tmx": {
+            "scale": 1.1600115740740742,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 456.8919930157146,
+                "y": 197.84285357944626
+            }
+        },
+        "C:/umayr/UCSC Classes/CMPM120/S7 Platformers/PlatformImprovement/assets/platformer-level-1.tmx#kenny_tilemap_packed": {
+            "scaleInDock": 1
+        },
+        "PixelPlatformer.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 2
+        },
+        "level1.tmx": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 381,
+                "y": 62.5
+            }
+        }
+    },
+    "last.exportedFilePath": "C:/umayr/UCSC Classes/CMPM120/S7 Platformers/PlatformImprovement/assets",
+    "last.imagePath": "C:/umayr/UCSC Classes/CMPM120/S8 StarterPlatformer/StarterPlatformer/assets",
+    "map.height": 16,
+    "map.lastUsedExportFilter": "All Files (*)",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 18,
+    "map.tileWidth": 18,
+    "map.width": 192,
+    "openFiles": [
+        "level1.tmx",
+        "PixelPlatformer.tsx",
+        "C:/umayr/UCSC Classes/CMPM120/S7 Platformers/PlatformImprovement/assets/platformer-level-1.tmx"
+    ],
+    "project": "level1.tiled-project",
+    "property.type": "bool",
+    "recentFiles": [
+        "level1.tmx",
+        "PixelPlatformer.tsx",
+        "C:/umayr/UCSC Classes/CMPM120/S7 Platformers/PlatformImprovement/assets/platformer-level-1.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 18,
+        "width": 18
+    }
+}
