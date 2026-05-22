@@ -9,6 +9,7 @@ class Platformer extends Phaser.Scene {
         this.physics.world.gravity.y = 1500;
         this.JUMP_VELOCITY = -700;
         this.SCALE = 2.0;
+        this.jumpsAvailable = 2;
         this.coinScore = 0;
         this.wasOnGround = false;
         this.levelComplete = false;
@@ -194,10 +195,16 @@ class Platformer extends Phaser.Scene {
         if (!onGround && my.vfx.walking.emitting) my.vfx.walking.stop();
         if (!onGround) my.sprite.player.anims.play('jump');
 
-        if (onGround && Phaser.Input.Keyboard.JustDown(cursors.up)) {
+        if (Phaser.Input.Keyboard.JustDown(cursors.up) && this.jumpsAvailable > 0) {
             my.sprite.player.body.setVelocityY(this.JUMP_VELOCITY);
             my.vfx.jumpDust.explode(10, my.sprite.player.x, my.sprite.player.y + 8);
             this.sound.play('jumpSfx', { volume: 0.6 });
+            this.jumpsAvailable--;
+        }
+
+        if (!this.wasOnGround && onGround) {
+            this.jumpsAvailable = 2;
+            my.vfx.landDust.explode(8, my.sprite.player.x, my.sprite.player.y + 8);
         }
 
         if (Phaser.Input.Keyboard.JustDown(this.rKey)) {
