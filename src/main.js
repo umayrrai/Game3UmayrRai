@@ -7,9 +7,7 @@
 let config = {
     parent: 'phaser-game',
     type: Phaser.CANVAS,
-    render: {
-        pixelArt: true
-    },
+    render: { pixelArt: true },
     physics: {
         default: 'arcade',
         arcade: {
@@ -17,8 +15,8 @@ let config = {
             gravity: { x: 0, y: 0 }
         }
     },
-    width: 720,
-    height: 450,
+    width: 1200,
+    height: 700,
     scene: [Load, Platformer, GameOver]
 };
 

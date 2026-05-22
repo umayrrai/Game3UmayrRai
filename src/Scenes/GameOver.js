@@ -12,25 +12,22 @@ class GameOver extends Phaser.Scene {
         const W = this.scale.width;
         const H = this.scale.height;
 
-        // ── Background overlay ──
         this.add.rectangle(W / 2, H / 2, W, H, this.win ? 0x1a3a1a : 0x3a1a1a, 0.92);
 
-        // ── Title ──
-        const titleText = this.win ? '🏆 LEVEL COMPLETE!' : '💀 GAME OVER';
+        const titleText  = this.win ? '🏆 LEVEL COMPLETE!' : '💀 GAME OVER';
         const titleColor = this.win ? '#FFD700' : '#FF4444';
 
         this.add.text(W / 2, H * 0.28, titleText, {
             fontFamily: 'monospace',
-            fontSize: '32px',
+            fontSize: '48px',
             color: titleColor,
             stroke: '#000000',
             strokeThickness: 5
         }).setOrigin(0.5);
 
-        // ── Score display ──
         this.add.text(W / 2, H * 0.46, `Coins Collected: ${this.finalScore / 10}`, {
             fontFamily: 'monospace',
-            fontSize: '18px',
+            fontSize: '26px',
             color: '#ffffff',
             stroke: '#000000',
             strokeThickness: 3
@@ -38,35 +35,32 @@ class GameOver extends Phaser.Scene {
 
         this.add.text(W / 2, H * 0.56, `Final Score: ${this.finalScore}`, {
             fontFamily: 'monospace',
-            fontSize: '22px',
+            fontSize: '32px',
             color: '#FFD700',
             stroke: '#000000',
             strokeThickness: 4
         }).setOrigin(0.5);
 
-        // ── Win/Lose message ──
         const subText = this.win
             ? 'You conquered all four zones!'
             : 'Better luck next time, adventurer!';
 
         this.add.text(W / 2, H * 0.68, subText, {
             fontFamily: 'monospace',
-            fontSize: '14px',
+            fontSize: '20px',
             color: '#cccccc',
             stroke: '#000000',
             strokeThickness: 2
         }).setOrigin(0.5);
 
-        // ── Restart prompt (flashing) ──
         const restartText = this.add.text(W / 2, H * 0.82, 'Press ENTER or SPACE to Play Again', {
             fontFamily: 'monospace',
-            fontSize: '14px',
+            fontSize: '20px',
             color: '#aaffaa',
             stroke: '#000000',
             strokeThickness: 2
         }).setOrigin(0.5);
 
-        // Flash the restart text
         this.tweens.add({
             targets: restartText,
             alpha: 0,
@@ -76,9 +70,8 @@ class GameOver extends Phaser.Scene {
             ease: 'Sine.easeInOut'
         });
 
-        // ── Win particles ──
         if (this.win) {
-            const confetti = this.add.particles(W / 2, -20, 'kenny-particles', {
+            this.add.particles(W / 2, -20, 'kenny-particles', {
                 frame: ['star_01.png', 'star_02.png', 'star_03.png', 'star_04.png'],
                 lifespan: 3000,
                 speedX: { min: -200, max: 200 },
@@ -97,17 +90,15 @@ class GameOver extends Phaser.Scene {
             });
         }
 
-        // ── Input to restart ──
         this.input.keyboard.on('keydown-ENTER', () => this.restartGame());
         this.input.keyboard.on('keydown-SPACE', () => this.restartGame());
         this.input.on('pointerdown', () => this.restartGame());
     }
 
     restartGame() {
-        // Reset global state
         my.sprite = {};
-        my.text = {};
-        my.vfx = {};
+        my.text   = {};
+        my.vfx    = {};
         this.scene.start("platformerScene");
     }
 }
