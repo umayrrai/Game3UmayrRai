@@ -168,11 +168,14 @@ class Platformer extends Phaser.Scene {
 
         const onGround = my.sprite.player.body.blocked.down;
 
+        // Landing detection
         if (!this.wasOnGround && onGround) {
+            this.jumpsAvailable = 2;
             my.vfx.landDust.explode(8, my.sprite.player.x, my.sprite.player.y + 8);
         }
         this.wasOnGround = onGround;
 
+        // Horizontal movement
         if (cursors.left.isDown) {
             my.sprite.player.setAccelerationX(-this.ACCELERATION);
             my.sprite.player.resetFlip();
@@ -195,6 +198,7 @@ class Platformer extends Phaser.Scene {
         if (!onGround && my.vfx.walking.emitting) my.vfx.walking.stop();
         if (!onGround) my.sprite.player.anims.play('jump');
 
+        // Jump
         if (Phaser.Input.Keyboard.JustDown(cursors.up) && this.jumpsAvailable > 0) {
             my.sprite.player.body.setVelocityY(this.JUMP_VELOCITY);
             my.vfx.jumpDust.explode(10, my.sprite.player.x, my.sprite.player.y + 8);
@@ -202,23 +206,21 @@ class Platformer extends Phaser.Scene {
             this.jumpsAvailable--;
         }
 
-        if (!this.wasOnGround && onGround) {
-            this.jumpsAvailable = 2;
-            my.vfx.landDust.explode(8, my.sprite.player.x, my.sprite.player.y + 8);
-        }
-
+        // Restart
         if (Phaser.Input.Keyboard.JustDown(this.rKey)) {
             if (this.bgMusic) this.bgMusic.stop();
             this.scene.restart();
         }
 
+        // Zone HUD
         const px = my.sprite.player.x / 18;
         if (px < 48) this.zoneText.setText('Zone 1 — Grasslands');
         else if (px < 96) this.zoneText.setText('Zone 2 — Arid Mountains');
         else if (px < 144) this.zoneText.setText('Zone 3 — Frozen Tundra');
         else this.zoneText.setText('Zone 4 — Mushroom Forest');
 
-        if (my.sprite.player.y > this.map.heightInPixels * this.SCALE + 100 && !this.isDead) {
+        // Pit death
+        if (my.sprite.player.y > this.map.heightInPixels + 100 && !this.isDead) {
             this.isDead = true;
             if (this.bgMusic) this.bgMusic.stop();
             this.time.delayedCall(300, () => {
